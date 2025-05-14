@@ -1,5 +1,6 @@
 from storage_manager import StorageManager
 from ui import UIManager
+from search import Search
 
 class TaskManager:
     def __init__(self):
@@ -16,32 +17,41 @@ class TaskManager:
         StorageManager().save_task(self.tasks) # save the tasks' list in tasks.json file
         UIManager().show_message("Task Added successfully ✅")
     
-    def show_task(self):
+    @staticmethod
+    def show_task():
         UIManager().show_tasks(StorageManager().load_task())
     
     def update_task(self, task_id, title, description):
-        for task in self.tasks:
-            if task_id == task['id']:
-                task['title'] = title
-                task['description'] = description 
-                StorageManager().save_task(self.tasks)
-                return True
+        task = Search(self.tasks).search_task(task_id)
+        if task:
+            task['title'] = title
+            task['description'] = description 
+            StorageManager().save_task(self.tasks)
+            return True
         else:
             print(f"No task with id {task_id}")
             return False
     
     def delete_task(self, task_id):
-        for task in self.tasks:
-            if task_id == task['id']:
-                self.tasks.remove(task)
-                StorageManager().save_task(self.tasks)
-                return True
+        task = Search(self.tasks).search_task(task_id)
+        if task:
+            self.tasks.remove(task)
+            StorageManager().save_task(self.tasks)
+            return True
         return False  # Return False only after checking all tasks
     
     def mark_task_as_completed(self, task_id):
-        for task in self.tasks:
-            if task_id == task['id']:
-                task['completed'] = True
-                StorageManager().save_task(self.tasks)
-                return True
+        task = Search(self.tasks).search_task(task_id)
+        if task:
+            task['completed'] = True
+            StorageManager().save_task(self.tasks)
+            return True
         return False  # Return False only after checking all tasks
+    
+    def mark_task_as_incompleted(self, task_id):
+        task = Search(self.tasks).search_task(task_id)
+        if task:
+            task['completed'] = False
+            StorageManager().save_task(self.tasks)
+            return True
+        return False
