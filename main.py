@@ -1,11 +1,14 @@
 from ui import UIManager
-from storage_manager import StorageManager
 from task_manager import TaskManager
+from date import Date
+from filter_tasks import FilterTask
+from storage_manager import StorageManager
 
 def main():
     task_manager = TaskManager()
     ui = UIManager()
-    storage_manager = StorageManager()
+    stroage_manager = StorageManager()
+    # filter = FilterTask(StorageManager().load_task())
     
     while True:
         ui.display_menu() # display the CLI based menu
@@ -16,11 +19,14 @@ def main():
             case 1:
                 title = ui.get_user_input("Title: ")
                 description = ui.get_user_input("Description: ")
+                due_date = ui.get_user_input("Due date (YYYY-MM-DD): ") 
                 task = {
                     "id": TaskManager().get_task_id() + 1,
                     "title":title,
                     "description":description,
-                    "completed":False
+                    "completed":False,
+                    "creationDate": Date().get_current_date(), # get the current date and format it in YYYY-MM-DD
+                    "dueDate": Date().validate_date(due_date) 
                 }
                 task_manager.add_task(task)        
             
@@ -50,8 +56,24 @@ def main():
                     print("done ✅")
                 else:
                     print(f"No task with id {task_id}")
-                
+            
             case 6:
+                task_id = int(ui.get_user_input("Enter task id to mark as incomplete: "))
+                
+                if task_manager.mark_task_as_incompleted(task_id):
+                    print("done ✅")
+                else:
+                    print(f"No task with id {task_id}")
+            
+            case 7:
+                ui.show_message("\n------- All completed tasks -------\n")
+                ui.show_tasks(FilterTask(stroage_manager.load_task()).filter_completed_tasks())
+            
+            case 8:
+                ui.show_message("\n------- All incompleted tasks -------\n")
+                ui.show_tasks(FilterTask(stroage_manager.load_task()).filter_incompleted_tasks())
+            
+            case 9:
                 break
             
             case _:
