@@ -16,7 +16,7 @@ Assignment 1 of Subject SCD (Software Construction & Development). This reposito
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Dreamix-Hub/Task-Manager.git
    ```
 
 2. Navigate to the project directory:
