@@ -60,7 +60,7 @@ Assignment 1 of Subject SCD (Software Construction & Development). This reposito
 
 ## Example
 
-Here is an example of adding a new task:
+Here is an example of using the Task Manager system:
 
 1. Run the application:
    ```bash
@@ -75,8 +75,68 @@ Here is an example of adding a new task:
    Description: This is a sample task.
    Due date (YYYY-MM-DD): 2025-12-31
    ```
+   The task will be added and saved to the `tasks.json` file.
 
-4. The task will be added and saved to the `tasks.json` file.
+4. Select option `2` to view all tasks:
+   ```
+   ------------- Task ID: 1 ---------------
+   Title: Example Task
+   Description: This is a sample task.
+   Status: ❌
+   Creation Date: 2025-05-16
+   Due Date: 2025-12-31
+   ----------------------------------------
+   ```
+
+5. Select option `3` to update a task:
+   ```
+   Enter task id to update: 1
+   Title: Updated Task
+   Description: Updated description.
+   Task updated successfully ✅
+   ```
+
+6. Select option `4` to delete a task:
+   ```
+   Enter task id to delete: 1
+   Task deleted successfully ✅
+   ```
+
+7. Select option `5` to mark a task as completed:
+   ```
+   Enter task id to mark as completed: 1
+   done ✅
+   ```
+
+8. Select option `6` to mark a task as incomplete:
+   ```
+   Enter task id to mark as incomplete: 1
+   done ✅
+   ```
+
+9. Select option `7` to view all completed tasks:
+   ```
+   ------- All completed tasks -------
+   ------------- Task ID: 2 ---------------
+   Title: Completed Task
+   Description: This task is done.
+   Status: ✅
+   Creation Date: 2025-05-16
+   Due Date: 2025-12-31
+   ----------------------------------------
+   ```
+
+10. Select option `8` to view all incomplete tasks:
+   ```
+   ------- All incompleted tasks -------
+   ------------- Task ID: 3 ---------------
+   Title: Incomplete Task
+   Description: This task is not done yet.
+   Status: ❌
+   Creation Date: 2025-05-16
+   Due Date: 2025-12-31
+   ----------------------------------------
+   ```
 
 ## License
 
