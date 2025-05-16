@@ -57,6 +57,8 @@ Assignment 1 of Subject SCD (Software Construction & Development). This reposito
 - `filter_tasks.py`: Provides functionality to filter tasks based on their completion status.
 - `search.py`: Contains the `Search` class for finding tasks by their ID.
 - `date.py`: Utility class for handling date-related operations.
+- `test_main.py`: Unit tests for the main application logic.
+- `test_task_manager.py`: Unit tests for the TaskManager class and its methods.
 
 ## Example
 
@@ -137,6 +139,27 @@ Here is an example of using the Task Manager system:
    Due Date: 2025-12-31
    ----------------------------------------
    ```
+
+## Unit Tests
+
+This project includes unit tests to ensure the reliability of the main application logic and the TaskManager class. The tests are written using the `pytest` framework.
+
+- `test_main.py`: Contains unit tests for the main application logic.
+- `test_task_manager.py`: Contains unit tests for the `TaskManager` class and its methods.
+
+### Running Unit Tests
+
+1. Install `pytest` if you haven't already:
+   ```bash
+   pip install pytest
+   ```
+
+2. Run the tests from the project directory:
+   ```bash
+   pytest
+   ```
+
+This will automatically discover and run all test files prefixed with `test_`.
 
 ## License
 
