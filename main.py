@@ -21,8 +21,8 @@ def handle_add_task():
     due_date = ui.get_user_input("Due date (YYYY-MM-DD): ")
     task = {
         "id": TaskManager().get_task_id() + 1,
-        "title": title,
-        "description": description,
+        "title": title.strip(),
+        "description": description.strip(),
         "completed": False,
         "creationDate": Date().get_current_date(),  # Get the current date
         "dueDate": Date().validate_date(due_date)  # Validate the due date
@@ -33,7 +33,7 @@ def handle_update_task():
     task_id = int(ui.get_user_input("Enter task id to update: "))
     title = ui.get_user_input("Title: ")
     description = ui.get_user_input("Description: ")
-    if task_manager.update_task(task_id, title, description):
+    if task_manager.update_task(task_id, title.strip(), description.strip()):
         print("Task updated successfully ✅")
     else:
         print("Error while updating task ❌")           
