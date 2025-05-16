@@ -21,9 +21,7 @@ class TaskManager:
         Returns:
             int: The ID of the last task, or 0 if no tasks exist.
         """
-        task_list = self.tasks
-        last_id = task_list[-1].get('id', 0) if task_list else 0
-        return last_id
+        return self.tasks[-1].get('id', 0) if self.tasks else 0
 
     def add_task(self, task):
         """
