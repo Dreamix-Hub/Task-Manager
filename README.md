@@ -156,7 +156,7 @@ This project includes unit tests to ensure the reliability of the main applicati
 
 2. Run the tests from the project directory:
    ```bash
-   pytest
+   pytest test_
    ```
 
 This will automatically discover and run all test files prefixed with `test_`.
